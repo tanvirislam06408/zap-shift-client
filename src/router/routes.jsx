@@ -9,7 +9,8 @@ export const router = createBrowserRouter([
     path:"/",
     Component:RootLayout,
     children:[
-        {index:true,Component:Home}
+        {index:true,Component:Home},
+        {path:'/service',element:<h1>service</h1>}
     ]
   },
 ]);
