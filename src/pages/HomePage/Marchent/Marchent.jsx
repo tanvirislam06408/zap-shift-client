@@ -2,7 +2,7 @@ import React from 'react';
 import locationPng from '../../../assets/location-merchant.png'
 const Marchent = () => {
     return (
-        <div className=" bg-no-repeat bg-[url('assets/be-a-merchant-bg.png')] bg-[#03373D] container mx-auto my-9 rounded-4xl p-20">
+        <div data-aos="flip-up" className=" bg-no-repeat bg-[url('assets/be-a-merchant-bg.png')] bg-[#03373D] container mx-auto my-9 rounded-4xl p-20">
             <div className="flex items-center flex-col lg:flex-row-reverse gap-7">
                 <div className="flex-1">
                     <img

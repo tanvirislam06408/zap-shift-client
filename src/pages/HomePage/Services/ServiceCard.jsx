@@ -3,7 +3,7 @@ import React from 'react';
 const ServiceCard = ({ service }) => {
     const { icon: Icon, title, description, featured } = service;
     return (
-        <div
+        <div data-aos="fade-up"
             className={`group flex flex-col items-center text-center rounded-2xl p-8 transition duration-300
         ${featured
                     ? "bg-gradient-to-br from-lime-400 to-lime-500 shadow-xl text-white"
