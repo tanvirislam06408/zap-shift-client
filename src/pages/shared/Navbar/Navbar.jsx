@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import ProFirstLogo from '../ProFirstLogo/ProFirstLogo';
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+    <Link to={'/login'} className="btn btn-outline rounded-2xl border-gray-400 text-[#606060]">Sign In</Link>
   </div>
 </div>
        </nav>

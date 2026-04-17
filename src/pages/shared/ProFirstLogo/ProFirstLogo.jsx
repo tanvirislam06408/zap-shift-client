@@ -1,10 +1,11 @@
 import React from 'react';
 import logo from '../../../assets/logo.png'
+import { Link } from 'react-router';
 const ProFirstLogo = () => {
     return (
         <div className='flex items-center'>
             <img className='mb-6' src={logo} alt="" />
-            <h1 className='text-3xl -ml-2 font-extrabold'>Profast</h1>
+            <Link to={'/'} className='text-3xl -ml-2 font-extrabold'>Profast</Link>
         </div>
     );
 };
