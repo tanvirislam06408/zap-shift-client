@@ -26,16 +26,19 @@ const Register = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <fieldset className="fieldset">
                      <label className="label">Name</label>
-                    <input type="text" {...register('name')} className="input w-full" placeholder="name" />
+                    <input type="text" {...register('name',{required:true})} className="input w-full" placeholder="name" />
                     <label className="label">Name</label>
-                    <input type="email" {...register('email')} className="input w-full" placeholder="Email" />
+                    <input type="email" {...register('email',{required:true})} className="input w-full" placeholder="Email" />
                     <label className="label">Password</label>
-                    <input type="password" {...register('password', { required: true })} className="input w-full" placeholder="Password" />
+                    <input type="password" {...register('password', { required: true ,minLength: 6})} className="input w-full" placeholder="Password" />
                     <Link to={'/login'}><a className="link link-hover">Already have an account ? Login</a></Link>
                     <button className="btn btn-primary mt-4 text-black">Register</button>
                 </fieldset>
             </form>
-            {errors.password && <span>{errors.password.message}</span>}
+            {errors.password?.type === 'required' && <span className='text-red-500'>Password is required</span>}
+            {errors.password?.type === 'minLength' && <span className='text-red-500'>Password must be at last 6 words</span>}
+            {errors.name?.type === 'required' && <span className='text-red-500'>Name is required</span>}
+            {errors.email?.type === 'required' && <span className='text-red-500'>Email is required</span>}
         </div>
     );
 };
