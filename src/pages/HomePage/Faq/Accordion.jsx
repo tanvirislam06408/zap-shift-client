@@ -1,3 +1,4 @@
+import { Sun } from 'lucide-react';
 import React from 'react';
 
 const Accordion = () => {
@@ -28,7 +29,7 @@ const Accordion = () => {
                 <summary className="collapse-title font-semibold text-[#03373D]">Do you offer cash on delivery (COD)?</summary>
                 <div className="collapse-content text-sm">Yes, we offer cash on delivery service. You can collect payment from your customer and receive it through your preferred payout method.</div>
             </details>
-
+            <div className="flex justify-center "><button className='text-2xl font-bold btn btn-primary text-black rounded-2xl py-6 mt-3.5 px-8'><Sun /> See More FAQ’s</button></div>
         </div>
     );
 };
