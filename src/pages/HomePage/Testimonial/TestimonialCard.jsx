@@ -3,7 +3,7 @@ import QuoteIcon from "./QuoteIcon";
 const TestimonialCard = ({ testimonial, isActive }) => {
   return (
     <div
-      className={`max-h-[300px] w-[350px] bg-white rounded-2xl p-6 flex flex-col border border-gray-100 shadow-lg transition-all duration-300 ${
+      className={`max-h-[300px] md:w-[350px] bg-white rounded-2xl p-6 flex flex-col border border-gray-100 shadow-lg transition-all duration-300 ${
         isActive ? "opacity-100" : "opacity-30"
       }`}
     >
