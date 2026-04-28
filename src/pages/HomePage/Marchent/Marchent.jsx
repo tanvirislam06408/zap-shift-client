@@ -4,7 +4,7 @@ const Marchent = () => {
     return (
         <div className="bg-[#edf1f1]">
 
-            <div data-aos="flip-up" className=" bg-no-repeat bg-[url('assets/be-a-merchant-bg.png')] bg-[#03373D] container mx-auto py-9 rounded-4xl p-20">
+            <div className=" bg-no-repeat bg-[url('assets/be-a-merchant-bg.png')] bg-[#03373D] container mx-auto py-9 rounded-4xl p-20">
                 <div className="flex items-center flex-col lg:flex-row-reverse gap-7">
                     <div className="flex-1">
                         <img
@@ -18,7 +18,7 @@ const Marchent = () => {
                             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                             quasi. In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <div className="flex gap-5">
+                        <div className="flex gap-5 flex-wrap">
                             <button className="btn btn-primary rounded-full text-black">Become a Merchant</button>
                             <button className="btn btn-outline rounded-full text-[#CAEB66] hover:text-black hover:bg-[#CAEB66]">Earn with Profast Courier</button>
                         </div>

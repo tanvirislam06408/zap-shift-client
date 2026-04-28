@@ -27,7 +27,6 @@ const features = [
 const Support = () => {
     return (<div className="w-full bg-[#eef0f2] py-10 px-4 md:px-16 space-y-6">
         {features.map((item, index) => (<div
-            data-aos="fade-left"
             key={index}
             className="flex container mx-auto flex-col md:flex-row items-center bg-white rounded-2xl shadow-sm p-6 md:p-10 gap-8"
         >
