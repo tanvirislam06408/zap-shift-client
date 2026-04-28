@@ -5,6 +5,8 @@ import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Coverage from "../pages/Coverage/Coverage";
+import AddParcelForm from "../pages/AddParcelForm/AddParcelForm";
+
 
 
 
@@ -14,7 +16,8 @@ export const router = createBrowserRouter([
     Component: RootLayout,
     children: [
       { index: true, Component: Home },
-      { path: 'coverage', element: <Coverage/> }
+      { path: 'coverage', element: <Coverage/> },
+      { path: '/add-parcel', element:  <AddParcelForm/>}
     ]
   },
   {
