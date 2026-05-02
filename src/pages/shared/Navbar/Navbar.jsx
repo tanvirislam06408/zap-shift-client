@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import ProFirstLogo from '../ProFirstLogo/ProFirstLogo';
 import useAuth from '../../../hooks/useAuth';
@@ -21,6 +21,9 @@ const Navbar = () => {
     <li><NavLink to={'/'}>Home</NavLink></li>
     <li><NavLink to={'/coverage'}>Coverage</NavLink></li>
     <li><NavLink to={'/add-parcel'}>Service</NavLink></li>
+    {
+      user &&  <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+    }
     <li><NavLink to={'/'}>About Us</NavLink></li>
   </>
   return (

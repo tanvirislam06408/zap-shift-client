@@ -6,6 +6,8 @@ import Login from "../pages/Authentication/Login";
 import Register from "../pages/Authentication/Register";
 import Coverage from "../pages/Coverage/Coverage";
 import AddParcelForm from "../pages/AddParcelForm/AddParcelForm";
+import PrivetRoutes from "../PrivetRoutes/PrivetRoutes";
+import DeashBoardLayout from "../Layouts/DeashBoardLayout";
 
 
 
@@ -27,6 +29,17 @@ export const router = createBrowserRouter([
       { path: 'login', Component: Login },
       {
         path:'register',Component:Register
+      }
+    ]
+  },
+  {
+    path:'/dashboard',
+    element:<PrivetRoutes>
+      <DeashBoardLayout/>
+    </PrivetRoutes>,
+    children:[
+      {
+        
       }
     ]
   }
