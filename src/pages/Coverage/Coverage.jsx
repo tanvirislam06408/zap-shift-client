@@ -62,7 +62,7 @@ export default function Coverage() {
   };
 
   return (
-    <div className="p-6 bg-base-200 min-h-screen">
+    <div className="md:p-6 bg-base-200 min-h-screen">
       <div className="max-w-6xl mx-auto bg-base-100 rounded-2xl shadow p-8">
         
         <h1 className="text-3xl text-[#03373D] font-bold mb-6">
@@ -74,14 +74,14 @@ export default function Coverage() {
           <input
             type="text"
             placeholder="Search here"
-            className="input border-none rounded-full w-full"
+            className="input rounded-full w-full border-none"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           />
           <button
             onClick={handleSearch}
-            className="btn btn-primary max-w-44 w-full rounded-full text-black"
+            className="btn btn-primary max-w-24 md:max-w-44 w-full rounded-full text-black"
           >
             Search
           </button>
