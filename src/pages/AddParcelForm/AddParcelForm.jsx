@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 
@@ -25,8 +26,9 @@ const generateTrackingId = (district = "GEN") => {
 
 export default function AddParcelForm() {
 
+  const axiosSecure = useAxiosSecure();
 
-  
+
   const {
     register,
     handleSubmit,
@@ -34,65 +36,71 @@ export default function AddParcelForm() {
     formState: { errors },
   } = useForm();
   const { user } = useAuth();
-  
-  
+
+
   const onSubmit = (data) => {
     const createdAt = new Date(); // ✅ FIX
-    
-    const trackingId=generateTrackingId(data.senderDistrict)
-  const parcelData = {
-    ...data,
 
-    // 📅 Time info
-    createdAt, // full date object
-    createdDate: createdAt.toLocaleDateString(),
-    createdTime: createdAt.toLocaleTimeString(),
+    const trackingId = generateTrackingId(data.senderDistrict)
+    const parcelData = {
+      ...data,
 
-    // 👤 User info
-    createdBy: {
-      payment_status: 'unpaid',
-      delivery_status:'not-collected',
-      email: user?.email,
-      trackingId
-    },
-  };
+      // 📅 Time info
+      createdAt, // full date object
+      createdDate: createdAt.toLocaleDateString(),
+      createdTime: createdAt.toLocaleTimeString(),
 
-  Swal.fire({
-    title: "Delivery Charge",
-    html: `
+      // 👤 User info
+      createdBy: {
+        payment_status: 'unpaid',
+        delivery_status: 'not-collected',
+        email: user?.email,
+        trackingId
+      },
+    };
+
+    axiosSecure.post('/parcel',parcelData)
+    .then(res=>{
+      console.log(res.data);
+      
+    })
+
+    Swal.fire({
+      title: "Delivery Charge",
+      html: `
       <p class="text-lg font-semibold">Estimated Cost: 50 TK</p>
       <p class="text-sm text-gray-500">Click confirm to calculate final cost</p>
     `,
-    icon: "info",
-    showCancelButton: true,
-    confirmButtonText: "Confirm Booking",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      const isDhaka =
-        data.senderDistrict === "Dhaka" &&
-        data.receiverDistrict === "Dhaka";
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonText: "Confirm Booking",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const isDhaka =
+          data.senderDistrict === "Dhaka" &&
+          data.receiverDistrict === "Dhaka";
 
-      let cost = isDhaka ? 100 : 150;
+        let cost = isDhaka ? 100 : 150;
 
-      const weight = parseFloat(data.parcelWeight) || 0;
+        const weight = parseFloat(data.parcelWeight) || 0;
 
-      if (weight > 1) {
-        cost += (weight - 1) * 30;
+        if (weight > 1) {
+          cost += (weight - 1) * 30;
+        }
+
+        parcelData.cost = cost;
+
+        // 👉 FINAL DATA (you can send anywhere later)
+        console.log("📦 FINAL PARCEL:", parcelData);
+
+        Swal.fire({
+          title: "Booking Confirmed 🎉",
+          html: `<p>Total Cost: <b>${cost} TK</b></p>`,
+          icon: "success",
+        });
       }
-
-      parcelData.cost = cost;
-
-      // 👉 FINAL DATA (you can send anywhere later)
-      console.log("📦 FINAL PARCEL:", parcelData);
-
-      Swal.fire({
-        title: "Booking Confirmed 🎉",
-        html: `<p>Total Cost: <b>${cost} TK</b></p>`,
-        icon: "success",
-      });
-    }
-  });
-};
+    });
+  };
 
   const locationData = {
     Dhaka: ["Dhamrai", "Dohar", "Keraniganj", "Nawabganj", "Savar"],
@@ -107,6 +115,16 @@ export default function AddParcelForm() {
 
   const senderDistrict = watch("senderDistrict");
   const receiverDistrict = watch("receiverDistrict");
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className="bg-base-200 min-h-screen flex justify-center p-6">
